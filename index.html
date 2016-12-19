@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="libs/dist/css/bootstrap.css"/>
+		<script src="libs/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body ng-controller="ctrl">
+		<table class="table table-bordered">
+			<tr>
+				<td ng-repeat="user in users">{{user}}</td>
+				<!--<td>1</td>
+				<td>1</td>
+				<td>1</td>-->
+			</tr>
+			<tr>
+				<td ng-repeat="user in users">{{user}}</td>
+				<!--<td>1</td>
+				<td>1</td>
+				<td>1</td>-->
+			</tr>
+			<tr>
+				<td ng-repeat="user in users">{{user}}</td>
+				<!--<td>1</td>
+				<td>1</td>
+				<td>1</td>-->
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>1</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>1</td>
+				<td>1</td>
+			</tr>
+		</table>
+		
+		{{5+ "5"}}
+		<input type="text" ng-model="userName" name="" id="" value="" />
+		{{userName}}
+		
+		{{ 12.00 | currency : "￥"}}
+		<ul >
+			<li ng-repeat="user in users">
+				{{user}}
+			</li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+		var app = angular.module("app",[]);
+		app.controller("ctrl",function($scope){
+			$scope.users=["wxx01","wxx02","wxx03"]
+			$scope.userName = "吴勋勋"
+		})
+	</script>
+</html>

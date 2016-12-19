@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div >
+			{{"helloworld"}}
+		</div>
+		<div >
+			{{5+5}}
+			{{1 == 1}}
+			{{NaN == NaN}}
+		</div>
+		<div>
+			用户
+			{{ {name:"zz1000phone",classID:"1611"}.name +  {name:"zz1000phone",classID:"1611"}.classID + "很棒"}}
+		</div>
+		<div>
+			{{ ["wxx","qss","wpj","lyd","dgj","nn"][2]  }}
+		</div>
+	</body>
+	<script src="libs/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+//		if(NaN == NaN){
+//			alert(0)
+//		}else{
+//			alert(1)
+//		}
+	</script>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app = "myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-controller="myCtrl">
+		<select name="" ng-model="car">
+			<option value="宝马">宝马</option>
+			<option value="奔驰">奔驰</option>
+			<option value="奥迪">奥迪</option>
+		</select>
+		您喜欢{{car}}车
+		<input ng-model="userName" />
+		{{userName}}
+	</body>
+	<script src="libs/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var app = angular.module("myApp",[]);
+		app.controller("myCtrl",function($scope){
+			$scope.car = "奔驰";
+		})
+	</script>
+</html>

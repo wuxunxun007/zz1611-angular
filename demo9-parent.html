@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app = "myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-controller="myCtrl">
+		<ul>
+			<li ng-repeat="provice in provices">
+				{{provice.name}}
+				<ul>
+					<li ng-repeat = "city in provice.cities">
+						{{city.name}}
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</body>
+	<script src="libs/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//和html ng-app = "myApp"一一对应，[] 指代的意思是我们后期需要注入的各个模块
+		var app = angular.module("myApp",[]);
+		app.controller("myCtrl",function($scope){
+			var provices = [
+				{
+					"name":"浙江",
+					"cities":[
+						{"name":"金华"},
+						{"name":"杭州"},
+						{"name":"温州"}
+					]
+				},
+				{
+					"name":"河南",
+					"cities":[
+						{"name":"郑州"},
+						{"name":"洛阳"},
+						{"name":"开封"}
+					]
+				},
+				{
+					"name":"江苏",
+					"cities":[
+						{"name":"南京"},
+						{"name":"苏州"},
+						{"name":"徐州"}
+					]
+				}
+			];
+			$scope.provices = provices;
+		});
+	</script>
+</html>

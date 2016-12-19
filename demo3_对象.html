@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app = "myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-controller="myCtrl">
+		{{ user.userName+"是"+user.sex+"，芳龄"+user.age+",电话号："+user.tel }}
+		{{ baowen }}
+	</body>
+	<script src="libs/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//和html ng-app = "myApp"一一对应，[] 指代的意思是我们后期需要注入的各个模块
+		var app = angular.module("myApp",[]);
+		app.controller("myCtrl",function($scope){
+			$scope.user = {
+				"userName":"秦双双",
+				"sex":"female",
+				"age":18,
+				"tel":110,
+				"obj":true
+			}
+			$scope.baowen = {
+				"userName":"隔壁老王",
+				"weight":"250KG",
+				"height":"250mm",
+				"obj":true,
+				"objName":"小明"
+			}
+		});
+	</script>
+</html>

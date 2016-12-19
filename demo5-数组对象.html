@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app = "myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-controller="myCtrl">
+		{{users[1].name+"的妻子叫"+users[1].wifeName}}
+	</body>
+	<script src="libs/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//和html ng-app = "myApp"一一对应，[] 指代的意思是我们后期需要注入的各个模块
+		var app = angular.module("myApp",[]);
+		app.controller("myCtrl",function($scope){
+			$scope.users = [
+				{
+					"name":"吴勋勋",
+					"age":16,
+					"height":185,
+					"weight":"90kg",
+					"wifeName":"穆瑾"
+				},
+				{
+					"name":"常小伟",
+					"age":18,
+					"height":168,
+					"weight":"60kg",
+					"wifeName":"宝宝"
+				},
+				{
+					"name":"小明",
+					"age":15,
+					"height":173,
+					"weight":"60kg",
+					"wifeName":"隔壁老王"
+				}
+			];
+		});
+	</script>
+</html>

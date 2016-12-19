@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="libs/dist/css/bootstrap.css" />
+		<style type="text/css">
+			.psTest{
+				/*width: 500px;*/
+			}
+			.panel-group .panel {
+  margin-bottom: 0;
+  border-radius: 0px;
+}
+		</style>
+	</head>
+
+	<body ng-controller="myCtrl">
+		<div class="panel-group container " id="accordion" role="tablist" aria-multiselectable="true" >
+			<div class="">
+				<div class="panel {{$index ==0 ?'panel-danger':'panel-primary'}} col-xs-12 col-sm-6 col-md-4" ng-repeat = " provice in provices">
+				<div class="panel-heading" role="tab" id="headingOne">
+					<h4 class="panel-title">
+				        <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{$index}}" aria-expanded="true" aria-controls="collapseOne">
+				          {{provice.name}}<span class="badge">{{$index+1}}</span>
+				        </a>
+      				</h4>
+				</div>
+				<div id="collapse{{$index}}" class="panel-collapse collapse {{$index == 0?'in':''}}" role="tabpanel" aria-labelledby="headingOne">
+					<div class="panel-body">
+						<ul class="list-group">
+						  <li class="list-group-item" ng-repeat="city in provice.cities">{{city.name}}<span class="badge">{{$index+1}}</span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+
+	</body>
+	<script src="libs/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="libs/dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="libs/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//和html ng-app = "myApp"一一对应，[] 指代的意思是我们后期需要注入的各个模块
+		var app = angular.module("myApp", []);
+		app.controller("myCtrl", function($scope) {
+			var provices = [{
+				"name": "浙江",
+				"cities": [{
+					"name": "金华"
+				}, {
+					"name": "杭州"
+				}, {
+					"name": "温州"
+				}]
+			}, {
+				"name": "河南",
+				"cities": [{
+					"name": "郑州"
+				}, {
+					"name": "洛阳"
+				}, {
+					"name": "开封"
+				}]
+			}, {
+				"name": "江苏",
+				"cities": [{
+					"name": "南京"
+				}, {
+					"name": "苏州"
+				}, {
+					"name": "徐州"
+				}]
+			}];
+			$scope.provices = provices;
+		});
+	</script>
+
+</html>

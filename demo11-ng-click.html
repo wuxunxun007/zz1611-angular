@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="libs/dist/css/bootstrap.css" />
+		<style type="text/css">
+			.table-striped .tableHeader{
+				background-color: #f66;
+			}
+			.table-striped > tbody > tr:nth-child(1) {
+			    background-color: #f66;
+			    color: #fff;
+			    font-weight: bold;
+			}
+			tr > td{
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body ng-controller="myCtrl">
+		<table class="table table-bordered table-striped">
+			<tr class="tableHeader">
+				<td>num</td>
+				<td>firstName</td>
+				<td>lastName</td>
+				<td>gender</td>
+				<td>likeNum</td>
+				<td>unLikeNum</td>
+				<td>likeBtn</td>
+				<td>unLikeBtn</td>
+			</tr>
+			<tr ng-repeat = "user in users">
+				<td>{{$index + 1 }}</td>
+				<td>{{user.firstName}}</td>
+				<td>{{user.lastName}}</td>
+				<td>{{user.gender}}</td>
+				<td>{{user.likeNum}}</td>
+				<td>{{user.unLikeNum}}</td>
+				<td><button class="btn btn-success btn-xs" ng-click="countLikeNum(user,$index)">喜欢</button></td>
+				<td><button class="btn btn-danger btn-xs" ng-click="countUnLikeNum(user,$index)">不喜欢</button></td>
+			</tr>
+		</table>
+	</body>
+	<script src="libs/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="libs/dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="libs/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//和html ng-app = "myApp"一一对应，[] 指代的意思是我们后期需要注入的各个模块
+		var app = angular.module("myApp", []);
+		app.controller("myCtrl", function($scope) {
+			var users = [
+				{
+					"firstName":"fang",
+					"lastName":"vane",
+					"gender":"male",
+					"likeNum":0,
+					"unLikeNum":0
+				},
+				{
+					"firstName":"sara",
+					"lastName":"rose",
+					"gender":"female",
+					"likeNum":0,
+					"unLikeNum":0
+				},
+				{
+					"firstName":"mark",
+					"lastName":"bear",
+					"gender":"male",
+					"likeNum":0,
+					"unLikeNum":0
+				},
+				{
+					"firstName":"pam",
+					"lastName":"hot",
+					"gender":"male",
+					"likeNum":0,
+					"unLikeNum":0
+				},
+				{
+					"firstName":"wang",
+					"lastName":"lao",
+					"gender":"male",
+					"likeNum":0,
+					"unLikeNum":0
+				}
+			];
+//			$scope.users = users;
+			if(localStorage.getItem("users")){
+				$scope.users = JSON.parse(localStorage.getItem("users"));
+			}else{
+				$scope.users = users;
+			}
+			
+			$scope.countLikeNum = function(user,id){
+				user.likeNum++;
+				console.log($scope.users);
+				localStorage.setItem("users",JSON.stringify($scope.users));
+//				localStorage.setItem("userLike"+id,user.likeNum);
+			}
+			$scope.countUnLikeNum = function(user,id){
+				user.unLikeNum++;
+				localStorage.setItem("users",JSON.stringify($scope.users));
+//				localStorage.setItem("userUnlike"+id,user.unLikeNum);
+			}
+		});
+	</script>
+
+</html>
